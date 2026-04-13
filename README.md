@@ -102,4 +102,58 @@ git restore README.md
 
 ## 4. Работа с удалённым репозиторием и форки
 
-> *Раздел будет дополнен из ветки global*
+### Привязка удалённого репозитория
+\```bash
+git remote add origin <url>
+# Пример:
+git remote add origin https://github.com/user/repo.git
+\```
+
+### Просмотр удалённых репозиториев
+\```bash
+git remote -v
+# Пример вывода:
+# origin  https://github.com/user/repo.git (fetch)
+# origin  https://github.com/user/repo.git (push)
+\```
+
+### Отправка изменений
+\```bash
+git push origin <ветка>
+# Пример:
+git push origin main
+\```
+
+### Получение изменений
+\```bash
+git fetch origin        # скачать, но не сливать
+git pull origin main    # скачать и слить
+\```
+
+### Клонирование репозитория
+\```bash
+git clone <url>
+# Пример:
+git clone https://github.com/user/repo.git
+\```
+
+### Работа с форками
+
+**Форк** — личная копия чужого репозитория на GitHub.
+
+**Процесс:**
+1. Нажми **Fork** на странице репозитория на GitHub
+2. Клонируй свой форк:
+\```bash
+git clone https://github.com/твой-ник/repo.git
+\```
+3. Добавь оригинальный репозиторий как upstream:
+\```bash
+git remote add upstream https://github.com/оригинальный-автор/repo.git
+\```
+4. Синхронизация с оригиналом:
+\```bash
+git fetch upstream
+git merge upstream/main
+\```
+5. После изменений — создай **Pull Request** через GitHub.
