@@ -10,7 +10,7 @@
 ## Создание учётной записи GitHub
  
 1. Перейди на [github.com](https://github.com) → нажми **Sign up**
-2. <img width="645" height="752" alt="image" src="https://github.com/user-attachments/assets/6b7371f5-18e3-4e7a-8ccf-df6cc93f7a70" />
+2. <img width="322" height="376" alt="image" src="https://github.com/user-attachments/assets/6b7371f5-18e3-4e7a-8ccf-df6cc93f7a70" />
 3. Введи email, пароль, имя пользователя
 4. Подтверди email
  
@@ -36,7 +36,7 @@ git --version
 
 При первом `git push` Git Bash откроет браузер с формой входа GitHub.
 
-<img width="517" height="436" alt="image" src="https://github.com/user-attachments/assets/f4ce6a4d-1d0c-4ebd-9d26-2368b39fd692" />
+<img width="317" height="236" alt="image" src="https://github.com/user-attachments/assets/f4ce6a4d-1d0c-4ebd-9d26-2368b39fd692" />
 
 Введи логин и пароль — авторизация пройдёт автоматически.  
 После этого Git запомнит credentials и больше не будет спрашивать.
