@@ -1,159 +1,118 @@
-# Инструкция по работе с Git
-
 ## Содержание
-1. [Создание учётной записи GitHub](#1-создание-учётной-записи-github)
-2. [Установка Git](#2-установка-git)
-3. [Работа с локальным репозиторием](#3-работа-с-локальным-репозиторием)
-4. [Работа с удалённым репозиторием и форки](#4-работа-с-удалённым-репозиторием-и-форки)
-
+ 
+- [Создание учётной записи GitHub](#-создание-учётной-записи-github)
+- [Установка Git](#-установка-git)
+- [Локальный репозиторий](#-локальный-репозиторий)
+- [Удалённый репозиторий и форки](#-удалённый-репозиторий-и-форки)
+ 
 ---
-
-## 1. Создание учётной записи GitHub
-
-1. Перейди на [github.com](https://github.com)
-2. Нажми **Sign up**
-3. Введи email, пароль, имя пользователя
-4. Подтверди email
-
+ 
+## Создание учётной записи GitHub
+ 
+1. Перейди на [github.com](https://github.com) → нажми **Sign up**
+2. Введи email, пароль, имя пользователя
+3. Подтверди email
+ 
 ---
-
-## 2. Установка Git
-
-### Windows
-Скачай установщик с [git-scm.com](https://git-scm.com) и запусти его.
-
+ 
+## Установка Git
+ 
+**Windows** — скачай установщик с [git-scm.com](https://git-scm.com) и запусти его.
+ 
 После установки настрой имя и email:
-\`\`\`bash
+ 
+```bash
 git config --global user.name "Имя Фамилия"
 git config --global user.email "email@example.com"
-\`\`\`
-
-### Проверка установки
-\`\`\`bash
+```
+ 
+Проверка:
+ 
+```bash
 git --version
-\`\`\`
-
+```
+ 
 ---
-
-## 3. Работа с локальным репозиторием
-
-### Инициализация репозитория
-\```bash
+ 
+## Локальный репозиторий
+ 
+### Инициализация
+ 
+```bash
+mkdir project && cd project
 git init
-# Пример: создать репозиторий в папке project/
-mkdir project && cd project && git init
-\```
-
-### Просмотр статуса
-\```bash
-git status
-# Пример: показывает изменённые и неотслеживаемые файлы
-\```
-
-### Добавление файлов в индекс
-\```bash
-git add <файл>      # конкретный файл
-git add .           # все изменения
-# Пример:
+```
+ 
+### Основной цикл работы
+ 
+| Команда | Что делает |
+|---|---|
+| `git status` | Показывает изменённые и неотслеживаемые файлы |
+| `git add <файл>` | Добавляет файл в индекс |
+| `git add .` | Добавляет все изменения |
+| `git commit -m "сообщение"` | Создаёт коммит |
+| `git log --oneline` | Краткая история коммитов |
+ 
+**Пример:**
+ 
+```bash
 git add README.md
-\```
-
-### Создание коммита
-\```bash
-git commit -m "сообщение"
-# Пример:
-git commit -m "feat: добавлен раздел о локальной работе"
-\```
-
-### Просмотр истории
-\```bash
-git log
-git log --oneline   # краткий вид
-# Пример вывода: a3f1c2b feat: начало проекта
-\```
-
-### Работа с ветками
-\```bash
-git branch              # список веток
-git branch <имя>        # создать ветку
-git checkout <имя>      # переключиться
-git checkout -b <имя>   # создать и переключиться
-# Пример:
-git checkout -b feature/login
-\```
-
-### Слияние веток
-\```bash
-git merge <ветка>
-# Пример: находясь в main, влить ветку local:
-git checkout main
-git merge local
-\```
-
+git commit -m "feat: добавлен README"
+```
+ 
+### Ветки
+ 
+```bash
+git branch                  # список веток
+git checkout -b feature/login  # создать и переключиться
+git checkout main           # вернуться в main
+git merge feature/login     # слить ветку в текущую
+```
+ 
 ### Отмена изменений
-\```bash
-git restore <файл>          # отменить изменения в файле
-git reset HEAD~1            # отменить последний коммит (файлы остаются)
-# Пример:
-git restore README.md
-\```
-
+ 
+```bash
+git restore <файл>   # отменить несохранённые изменения
+git reset HEAD~1     # отменить последний коммит (файлы остаются)
+```
+ 
 ---
-
-## 4. Работа с удалённым репозиторием и форки
-
-### Привязка удалённого репозитория
-\```bash
-git remote add origin <url>
-# Пример:
+ 
+## Удалённый репозиторий и форки
+ 
+### Привязка и базовые операции
+ 
+```bash
 git remote add origin https://github.com/user/repo.git
-\```
-
-### Просмотр удалённых репозиториев
-\```bash
-git remote -v
-# Пример вывода:
-# origin  https://github.com/user/repo.git (fetch)
-# origin  https://github.com/user/repo.git (push)
-\```
-
-### Отправка изменений
-\```bash
-git push origin <ветка>
-# Пример:
-git push origin main
-\```
-
-### Получение изменений
-\```bash
-git fetch origin        # скачать, но не сливать
-git pull origin main    # скачать и слить
-\```
-
-### Клонирование репозитория
-\```bash
-git clone <url>
-# Пример:
-git clone https://github.com/user/repo.git
-\```
-
-### Работа с форками
-
-**Форк** — личная копия чужого репозитория на GitHub.
-
-**Процесс:**
-1. Нажми **Fork** на странице репозитория на GitHub
+git remote -v                   # проверить привязку
+ 
+git push origin main            # отправить изменения
+git pull origin main            # получить изменения
+git clone https://github.com/user/repo.git  # клонировать
+```
+ 
+### Работа с форком
+ 
+> **Форк** — личная копия чужого репозитория на GitHub.
+ 
+```
+Оригинальный репо → [Fork] → Твой репо на GitHub → [Clone] → Локальная копия
+```
+ 
+**Шаги:**
+ 
+1. Нажми **Fork** на странице репозитория
 2. Клонируй свой форк:
-\```bash
-git clone https://github.com/твой-ник/repo.git
-\```
-3. Добавь оригинальный репозиторий как upstream:
-\```bash
-git remote add upstream https://github.com/оригинальный-автор/repo.git
-\```
-4. Синхронизация с оригиналом:
-\```bash
-git fetch upstream
-git merge upstream/main
-\```
-5. После изменений — создай **Pull Request** через GitHub.
+   ```bash
+   git clone https://github.com/твой-ник/repo.git
+   ```
+3. Добавь оригинал как `upstream`:
+   ```bash
+   git remote add upstream https://github.com/автор/repo.git
+   ```
+4. Синхронизируй с оригиналом:
+   ```bash
+   git fetch upstream
+   git merge upstream/main
+   ```
+5. После изменений создай **Pull Request** через GitHub
